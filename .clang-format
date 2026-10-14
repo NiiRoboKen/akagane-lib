@@ -1,0 +1,14 @@
+BasedOnStyle: LLVM
+
+# アクセス修飾子のインデント有効化
+IndentAccessModifiers: true
+
+# アスタリスクの位置変更
+DerivePointerAlignment: false
+PointerAlignment: Left
+
+# 一行あたりの文字数の制限解除
+ColumnLimit: 0
+
+# 最後の行に改行を挿入
+InsertNewlineAtEOF: true

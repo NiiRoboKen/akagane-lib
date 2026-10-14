@@ -1,0 +1,14 @@
+{
+  "$schema": "https://raw.githubusercontent.com/platformio/platformio-core/develop/platformio/assets/schema/library.json",
+  "name": "Akagane Library",
+  "version": "0.0.1",
+  "description": "新居浜高専ロボット研究部 部内ライブラリ",
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NiiRoboKen/akagane-lib.git"
+  },
+  "frameworks": "*",
+  "platforms": "*",
+  "headers": ["akagane.hpp"]
+}
