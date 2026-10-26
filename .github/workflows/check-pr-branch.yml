@@ -8,6 +8,7 @@ on:
 jobs:
   check-merge-source:
     runs-on: ubuntu-latest
+    if: github.head_ref == 'develop'
     steps:
       - name: Check if source branch is develop
         if: github.head_ref != 'develop'
