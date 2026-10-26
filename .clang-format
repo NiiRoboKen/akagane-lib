@@ -1,8 +1,5 @@
 BasedOnStyle: LLVM
 
-# アクセス修飾子のインデント有効化
-IndentAccessModifiers: true
-
 # アスタリスクの位置変更
 DerivePointerAlignment: false
 PointerAlignment: Left
