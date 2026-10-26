@@ -1,7 +1,7 @@
 #pragma once
 
-#include "macro.hpp"
 #include "logger.hpp"
+#include "macro.hpp"
 
 namespace Akagane {
 
