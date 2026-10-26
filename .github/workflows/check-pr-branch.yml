@@ -1,0 +1,16 @@
+name: Check PR Branch
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check-merge-source:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if source branch is develop
+        if: github.head_ref != 'develop'
+        run: |
+          echo "Error: main ブランチへのマージは develop ブランチからのみ許可されています。"
+          exit 1
