@@ -1,7 +1,7 @@
 #pragma once
 
-#include <cstdint>
 #include "traits.hpp"
+#include <cstdint>
 
 namespace Akagane {
 
@@ -70,4 +70,4 @@ struct TypeInfo<uint64_t> {
     static constexpr uint64_t MIN = 0;
 };
 
-};
+}; // namespace Akagane

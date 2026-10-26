@@ -29,4 +29,4 @@ using require_t = typename __Require<is_require, T>::type;
 template <typename T>
 struct TypeInfo {};
 
-};
+}; // namespace Akagane
