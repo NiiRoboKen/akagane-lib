@@ -30,6 +30,7 @@ public:
   void toggle();
 
 private:
+  void check_initialized();
   bool is_initialized;
   Digital state;
 };
