@@ -4,12 +4,12 @@ namespace Akagane {
 
 template <typename T, typename U>
 struct __Eq {
-    static constexpr bool value = false;
+  static constexpr bool value = false;
 };
 
 template <typename T>
 struct __Eq<T, T> {
-    static constexpr bool value = true;
+  static constexpr bool value = true;
 };
 
 template <typename T, typename U>
@@ -20,7 +20,7 @@ struct __Require {};
 
 template <typename T>
 struct __Require<true, T> {
-    using type = T;
+  using type = T;
 };
 
 template <bool is_require, typename T>
