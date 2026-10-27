@@ -9,7 +9,7 @@ using pin_number_t = uint8_t;
 class Pin {
 public:
   Pin(pin_number_t pin_number);
-  inline uint8_t get_pin_number();
+  inline uint8_t get_pin_number() const;
 
 protected:
   pin_number_t pin_number;

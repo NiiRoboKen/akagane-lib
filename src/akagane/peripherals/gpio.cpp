@@ -6,7 +6,7 @@ namespace Akagane {
 
 Pin::Pin(uint8_t pin_number) : pin_number(pin_number) {}
 
-inline uint8_t Pin::get_pin_number() {
+inline uint8_t Pin::get_pin_number() const {
   return this->pin_number;
 }
 
