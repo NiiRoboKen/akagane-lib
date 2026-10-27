@@ -10,4 +10,4 @@ constexpr uint64_t nbits_max() {
   return ~0ULL >> (64 - N);
 }
 
-};
+}; // namespace Akagane

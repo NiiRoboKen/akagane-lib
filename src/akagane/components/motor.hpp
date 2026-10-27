@@ -32,10 +32,11 @@ private:
 };
 
 class MockMotor : public IMotor {
-  public:
+public:
   MockMotor(const char* name);
   void run(Dir dir, uint16_t value);
-  private:
+
+private:
   const char* name;
 };
 
