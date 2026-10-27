@@ -22,6 +22,7 @@ enum class Digital {
 };
 
 interface IOutputPin {
+  virtual void init(Digital initial_state) = 0;
   virtual void set_high() = 0;
   virtual void set_low() = 0;
   virtual void toggle() = 0;

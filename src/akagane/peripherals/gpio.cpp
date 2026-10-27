@@ -22,6 +22,9 @@ namespace Akagane {
 PushpullPin::PushpullPin(pin_number_t pin_number) : Pin(pin_number) {}
 
 void PushpullPin::init(Digital initial_state) {
+  if (this->is_initialized) {
+    return;
+  }
   this->is_initialized = true;
   pinMode(this->pin_number, OUTPUT);
   if (initial_state == Digital::High) {
@@ -65,6 +68,9 @@ void PushpullPin::check_initialized() {
 OpendrainPin::OpendrainPin(pin_number_t pin_number) : Pin(pin_number) {}
 
 void OpendrainPin::init(Digital initial_state) {
+  if (this->is_initialized) {
+    return;
+  }
   this->is_initialized = true;
   pinMode(this->pin_number, OUTPUT_OPEN_DRAIN);
   if (initial_state == Digital::High) {
@@ -108,6 +114,9 @@ void OpendrainPin::check_initialized() {
 InputPin::InputPin(pin_number_t pin_number) : Pin(pin_number) {}
 
 void InputPin::init(PullMode pull) {
+  if (this->is_initialized) {
+    return;
+  }
   this->is_initialized = true;
   switch (pull) {
   case PullMode::None:
@@ -151,12 +160,16 @@ namespace Akagane {
 PWMPin::PWMPin(pin_number_t pin_number) : Pin(pin_number) {}
 
 void PWMPin::init(uint32_t _freq) {
+  if (this->is_initialized) {
+    return;
+  }
   this->is_initialized = true;
   // NOTE: ESP32では16bitの分解能では1.2kHzほどが限界のため周波数の指定を無視する
   bool result = ledcAttach(this->pin_number, 1200, 16);
   if (!result) {
     AKAGANE_PANIC("PWMPin GPIO%d can not initialized.", this->pin_number);
   }
+  this->set_duty(0);
 }
 
 void PWMPin::set_duty(uint16_t duty) {
