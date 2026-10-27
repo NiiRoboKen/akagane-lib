@@ -31,4 +31,13 @@ private:
   bool invert;
 };
 
+class MockMotor : public IMotor {
+public:
+  MockMotor(const char* name);
+  void run(Dir dir, uint16_t value);
+
+private:
+  const char* name;
+};
+
 }; // namespace Akagane
