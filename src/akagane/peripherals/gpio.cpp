@@ -30,6 +30,12 @@ void PushpullPin::init(Digital initial_state) {
   }
 }
 
+void PushpullPin::set(Digital state) {
+  this->check_initialized();
+  this->state = state;
+  digitalWrite(this->pin_number, state == Digital::High ? HIGH : LOW);
+}
+
 void PushpullPin::set_high() {
   this->check_initialized();
   this->state = Digital::High;

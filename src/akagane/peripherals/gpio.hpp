@@ -24,6 +24,7 @@ class PushpullPin : public Pin {
 public:
   PushpullPin(pin_number_t pin_number);
   void init(Digital initial_state);
+  void set(Digital state);
   void set_high();
   void set_low();
   Digital get_state();
