@@ -1,4 +1,5 @@
 #include "motor.hpp"
+#include "../utils/logger.hpp"
 
 namespace Akagane {
 
@@ -16,6 +17,12 @@ void CytronMD::run(Dir dir, uint16_t duty) {
     this->dir->set_high();
   }
   this->pwm->set_duty(duty);
+}
+
+MockMotor::MockMotor(const char* name) : name(name) {}
+
+void MockMotor::run(Dir dir, uint16_t duty) {
+  AKAGANE_DEBUG("%s: dir = %d, pwm = %d", this->name, dir == Dir::CW ? 0 : 1, duty);
 }
 
 }; // namespace Akagane
