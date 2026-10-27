@@ -1,8 +1,8 @@
 #include "gpio.hpp"
+#include "../math/bits.hpp"
 #include "../types/numeric.hpp"
 #include "../utils/panic.hpp"
 #include <cstdint>
-#include "../math/bits.hpp"
 
 namespace Akagane {
 
