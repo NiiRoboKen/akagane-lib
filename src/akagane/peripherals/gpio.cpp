@@ -2,6 +2,7 @@
 #include "../types/numeric.hpp"
 #include "../utils/panic.hpp"
 #include <cstdint>
+#include "../math/bits.hpp"
 
 namespace Akagane {
 
@@ -164,8 +165,9 @@ void PWMPin::init(uint32_t _freq) {
     return;
   }
   this->is_initialized = true;
-  // NOTE: ESP32では16bitの分解能では1.2kHzほどが限界のため周波数の指定を無視する
-  bool result = ledcAttach(this->pin_number, 1200, 16);
+
+  // NOTE: ESP32では14bitが限界で、2.4kHzほどが限界のため周波数の指定を無視する
+  bool result = ledcAttach(this->pin_number, 2400, 14);
   if (!result) {
     AKAGANE_PANIC("PWMPin GPIO%d can not initialized.", this->pin_number);
   }
@@ -174,7 +176,9 @@ void PWMPin::init(uint32_t _freq) {
 
 void PWMPin::set_duty(uint16_t duty) {
   this->check_initialized();
-  ledcWrite(this->pin_number, duty);
+  uint16_t duty14bits = duty * nbits_max<14>() / nbits_max<16>();
+  // NOTE: 14bitの解像度だがその最大値を入れると内部でオーバーフローしてる模様
+  ledcWrite(this->pin_number, constrain(duty14bits, 0, nbits_max<14>() - 1));
 }
 
 void PWMPin::check_initialized() {
