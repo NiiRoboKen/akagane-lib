@@ -21,13 +21,13 @@ interface IMotor {
 
 class CytronMD : public IMotor {
 public:
-  CytronMD(PWMPin* pwm, IOutputPin* dir, bool invert);
+  CytronMD(PWMPin& pwm, IOutputPin& dir, bool invert);
   void init(uint32_t pwm_freq);
   void run(Dir dir, uint16_t value);
 
 private:
-  PWMPin* pwm;
-  IOutputPin* dir;
+  PWMPin& pwm;
+  IOutputPin& dir;
   bool invert;
 };
 

@@ -8,12 +8,12 @@ namespace Akagane {
 
 class OmniWheel {
 public:
-  OmniWheel(IMotor* motor, double radian);
+  OmniWheel(IMotor& motor, double radian);
   void init();
   void move(int16_t x, int16_t y);
 
 private:
-  IMotor* motor;
+  IMotor& motor;
   double radian;
 };
 
