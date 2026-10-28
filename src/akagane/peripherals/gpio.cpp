@@ -142,6 +142,14 @@ bool InputPin::is_low() {
   return digitalRead(this->pin_number) == LOW;
 }
 
+Digital InputPin::get_state() {
+  if (this->is_high()) {
+    return Digital::High;
+  } else {
+    return Digital::Low;
+  }
+}
+
 void InputPin::check_initialized() {
   if (!this->is_initialized) {
     AKAGANE_PANIC("InputPin GPIO%d is not initialized.", this->pin_number);
