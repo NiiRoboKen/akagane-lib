@@ -20,10 +20,11 @@ inline uint8_t Pin::get_pin_number() {
 
 namespace Akagane {
 
-PushpullPin::PushpullPin(pin_number_t pin_number) : Pin(pin_number) {}
+PushpullPin::PushpullPin(pin_number_t pin_number) : Pin(pin_number), is_initialized(false) {}
 
 void PushpullPin::init(Digital initial_state) {
   if (this->is_initialized) {
+    AKAGANE_WARN("PushpullPin GPIO%d already initialized.", this->pin_number);
     return;
   }
   this->is_initialized = true;
@@ -33,6 +34,7 @@ void PushpullPin::init(Digital initial_state) {
   } else {
     this->set_low();
   }
+  AKAGANE_DEBUG("PushpullPin GPIO%d initialized.", this->pin_number);
 }
 
 void PushpullPin::set_high() {
@@ -66,10 +68,11 @@ void PushpullPin::check_initialized() {
   }
 }
 
-OpendrainPin::OpendrainPin(pin_number_t pin_number) : Pin(pin_number) {}
+OpendrainPin::OpendrainPin(pin_number_t pin_number) : Pin(pin_number), is_initialized(false) {}
 
 void OpendrainPin::init(Digital initial_state) {
   if (this->is_initialized) {
+    AKAGANE_WARN("OpendrainPin GPIO%d already initialized.", this->pin_number);
     return;
   }
   this->is_initialized = true;
@@ -79,6 +82,7 @@ void OpendrainPin::init(Digital initial_state) {
   } else {
     this->set_low();
   }
+  AKAGANE_DEBUG("OpendrainPin GPIO%d initialized.", this->pin_number);
 }
 
 void OpendrainPin::set_high() {
@@ -112,10 +116,11 @@ void OpendrainPin::check_initialized() {
   }
 }
 
-InputPin::InputPin(pin_number_t pin_number) : Pin(pin_number) {}
+InputPin::InputPin(pin_number_t pin_number) : Pin(pin_number), is_initialized(false) {}
 
 void InputPin::init(PullMode pull) {
   if (this->is_initialized) {
+    AKAGANE_WARN("InputPin GPIO%d already initialized.", this->pin_number);
     return;
   }
   this->is_initialized = true;
@@ -130,6 +135,7 @@ void InputPin::init(PullMode pull) {
     pinMode(this->pin_number, INPUT_PULLUP);
     break;
   }
+  AKAGANE_DEBUG("InputPin GPIO%d initialized.", this->pin_number);
 }
 
 bool InputPin::is_high() {
@@ -166,10 +172,11 @@ void InputPin::check_initialized() {
 
 namespace Akagane {
 
-PWMPin::PWMPin(pin_number_t pin_number) : Pin(pin_number) {}
+PWMPin::PWMPin(pin_number_t pin_number) : Pin(pin_number), is_initialized(false) {}
 
 void PWMPin::init(uint32_t _freq) {
   if (this->is_initialized) {
+    AKAGANE_WARN("PWMPin GPIO%d already initialized.", this->pin_number);
     return;
   }
   this->is_initialized = true;
@@ -180,6 +187,7 @@ void PWMPin::init(uint32_t _freq) {
     AKAGANE_PANIC("PWMPin GPIO%d can not initialized.", this->pin_number);
   }
   this->set_duty(0);
+  AKAGANE_DEBUG("PWMPin GPIO%d initialized.", this->pin_number);
 }
 
 void PWMPin::set_duty(uint16_t duty) {
