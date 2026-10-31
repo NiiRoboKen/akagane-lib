@@ -7,6 +7,8 @@
 #include "akagane/components/omni.hpp"
 #include "akagane/components/switch.hpp"
 #include "akagane/math/bits.hpp"
+#include "akagane/math/math.hpp"
+#include "akagane/math/pid.hpp"
 #include "akagane/peripherals/gpio.hpp"
 #include "akagane/types/numeric.hpp"
 #include "akagane/types/traits.hpp"
