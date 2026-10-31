@@ -24,6 +24,7 @@ public:
   CytronMD(PWMPin& pwm, IOutputPin& dir, bool invert);
   void init(uint32_t pwm_freq);
   void run(Dir dir, uint16_t value);
+  static CytronMD from_gpio(pin_number_t pwm_pin, pin_number_t dir_pin, bool invert);
 
 private:
   PWMPin& pwm;

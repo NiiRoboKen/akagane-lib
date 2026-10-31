@@ -19,6 +19,13 @@ void CytronMD::run(Dir dir, uint16_t duty) {
   this->pwm.set_duty(duty);
 }
 
+CytronMD CytronMD::from_gpio(pin_number_t pwm_pin, pin_number_t dir_pin, bool invert) {
+  // このクラスのインスタンスはプログラム終了時まで生きるのでdeleteする必要はない
+  PushpullPin* dir = new PushpullPin(dir_pin);
+  PWMPin* pwm = new PWMPin(pwm_pin);
+  return CytronMD(*pwm, *dir, invert);
+}
+
 MockMotor::MockMotor(const char* name) : name(name) {}
 
 void MockMotor::run(Dir dir, uint16_t duty) {

@@ -77,6 +77,7 @@ public:
   void init(PullMode pull);
   bool is_high();
   bool is_low();
+  Digital get_state();
 
 private:
   void check_initialized();
