@@ -10,6 +10,7 @@
 #include "akagane/math/math.hpp"
 #include "akagane/math/pid.hpp"
 #include "akagane/peripherals/gpio.hpp"
+#include "akagane/types/angle.hpp"
 #include "akagane/types/numeric.hpp"
 #include "akagane/types/traits.hpp"
 #include "akagane/utils/logger.hpp"
