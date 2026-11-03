@@ -4,7 +4,7 @@
 #include "motor.hpp"
 #include <algorithm>
 #include <array>
-#include <math.h>
+#include <cmath>
 
 namespace Akagane {
 
