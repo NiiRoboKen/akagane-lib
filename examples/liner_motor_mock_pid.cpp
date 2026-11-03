@@ -24,7 +24,7 @@ double mock_linear_motor(double duty, double dt) {
   constexpr double TAU_FRICTION = 0.7;
   static double position = 0.0;
   static double velocity = 0.0;
-  duty = clamp(duty, -255.0, 255.0);
+  duty = std::clamp(duty, -255.0, 255.0);
   const double target_velocity = MAX_SPEED * duty / 255.0;
   const double tau = (duty == 0.0) ? TAU_FRICTION : TAU_ACCEL;
   const double alpha = 1.0 - std::exp(-dt / tau);

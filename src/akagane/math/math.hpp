@@ -1,6 +1,6 @@
 #pragma once
 
-#include <cmath>
+#include "../types/numeric.hpp"
 
 namespace Akagane {
 
@@ -14,9 +14,9 @@ inline constexpr T max(T a, T b) {
   return a > b ? a : b;
 }
 
-template <typename T>
-inline constexpr T clamp(T value, T lower, T upper) {
-  return min(max(lower, value), upper);
+template <typename T, typename U>
+inline constexpr T clamp(U value) {
+  return min(max((U)TypeInfo<T>::MIN, value), (U)TypeInfo<T>::MAX);
 }
 
 }; // namespace Akagane
